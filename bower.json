@@ -1,0 +1,22 @@
+{
+    "name": "tx1",
+    "version": "0.0.1",
+    "authors": [
+        "chuzheng"
+    ],
+    "description": "tx1",
+    "main": "app.js",
+    "moduleType": [
+        "node"
+    ],
+    "keywords": [
+        "tx1"
+    ],
+    "license": "MIT",
+    "private": true,
+    "dependencies" : {
+        "jquery" : "1.x",
+        "bootstrap" : "3.x",
+        "angular" : "*"
+    }
+}

@@ -1,0 +1,202 @@
+doctype html
+html
+    head
+        include ../includes/head
+    body
+        include ../includes/alert
+        // Page Container
+        #page-container.sidebar-partial.sidebar-visible-lg.sidebar-no-animations
+            // Main Sidebar
+            #sidebar
+                // Wrapper for scrolling functionality
+                .sidebar-scroll
+                    // Sidebar Content
+                    .sidebar-content
+                        // Brand
+                        a.sidebar-brand(href="/")
+                            i.gi.gi-flash
+                            strong 维度表配置系统
+                        // END Brand
+                        // User Info
+                        .sidebar-section.sidebar-user.clearfix
+                            .sidebar-user-avatar
+                                a(href="#")
+                                    img(src="/static/img/placeholders/avatars/avatar2.jpg", alt="avatar")
+                            .sidebar-user-name zachary
+                            .sidebar-user-links
+                                a(href="#", data-toggle="tooltip", data-placement="bottom", title="Logout")
+                                    i.gi.gi-exit
+                        // END User Info
+                        // Sidebar Navigation
+                        ul.sidebar-nav
+                            li
+                                a(href="/")
+                                    i.gi.gi-stopwatch.sidebar-nav-icon
+                                    | 首页
+                            li.sidebar-header
+                                span.sidebar-header-title 维度配置
+                            li
+                                a.active(href="page_widgets_stats.html")
+                                    i.gi.gi-charts.sidebar-nav-icon
+                                    | 元数据配置
+                            li
+                                a(href="page_widgets_social.html")
+                                    i.gi.gi-share_alt.sidebar-nav-icon
+                                    | 数据配置
+                        // END Sidebar Navigation
+                    // END Sidebar Content
+                // END Wrapper for scrolling functionality
+            // END Main Sidebar
+            // Main Container
+            #main-container
+                // Header
+                header.navbar.navbar-default
+                    // Left Header Navigation
+                    ul.nav.navbar-nav-custom
+                        // Main Sidebar Toggle Button
+                        li
+                            a(href="javascript:void(0)", onclick="App.sidebar('toggle-sidebar');")
+                                i.fa.fa-bars.fa-fw
+                        // END Main Sidebar Toggle Button
+                    // END Left Header Navigation
+                    // Right Header Navigation
+                    ul.nav.navbar-nav-custom.pull-right
+                        // User Dropdown
+                        li.dropdown
+                            a.dropdown-toggle(href="javascript:void(0)", data-toggle="dropdown")
+                                img(src="/static/img/placeholders/avatars/avatar2.jpg", alt="avatar")
+                                i.fa.fa-angle-down
+                            ul.dropdown-menu.dropdown-custom.dropdown-menu-right
+                                li.divider
+                                li
+                                    a(href="#")
+                                        i.fa.fa-ban.fa-fw.pull-right
+                                        | 退出
+                        // END User Dropdown
+                    // END Right Header Navigation
+                // END Header
+                // Page content
+                #page-content
+                    // Datatables Header
+                    .content-header
+                        .header-section
+                            h1
+                                i.fa.fa-table
+                                | 元数据配置
+                    ul.breadcrumb.breadcrumb-top
+                        li 维度配置
+                        li
+                            a(href="") 元数据配置
+                    // END Datatables Header
+                    // search dimension table
+                    .block.full
+                        .block-title
+                            h2
+                                strong 选择表
+                        p
+                            form.form-inline(action="", method="post")
+                                .form-group.gap-right-5
+                                    label.sr-only 数据源
+                                    select.form-control
+                                        option(value="0") 选择数据源
+                                        option(value="1") 精品
+                                        option(value="2") 手Q
+                                        option(value="3") 海纳
+                                .form-group.gap-right-5
+                                    label.sr-only 表名
+                                    input.form-control(type="text", placeholder="请输入表名", required)
+                                .form-group
+                                    button.btn.btn-sm.btn-primary(type="submit") 搜索
+                    // end dimension table
+                    // Datatables Content
+                    .block.full
+                        .block-title
+                            h2
+                                strong 表元数据
+                        .table-responsive
+                            table#example-datatable.table.table-vcenter.table-condensed.table-bordered
+                                thead
+                                    tr
+                                        th.text-center 列名
+                                        th.text-center 数据类型
+                                        th.text-center 是否为空
+                                        th.text-center 是否为主键
+                                        th.text-center 默认值
+                                        th.text-center 注释
+                                        th.text-center 关联产品
+                                        th.text-center 操作
+                                tbody
+                                    tr
+                                        td.text-center igoodtype
+                                        td.text-center integer
+                                        td.text-center 否
+                                        td.text-center 是
+                                        td 
+                                        td 我是注释
+                                        td 欢乐斗地主
+                                        td.text-center
+                                            .btn-group
+                                                a.btn.btn-xs.btn-info(href="#", data-toggle="tooltip", title="修改注释") 编辑注释
+                                                a.btn.btn-xs.btn-info(href="#", data-toggle="tooltip", title="修改产品关联") 编辑产品关联
+                    // END Datatables Content
+                // END Page Content
+                // Footer
+                footer.clearfix
+                    .pull-right created by 移动经分小组
+                    .pull-left
+                        a(href="/", target="_blank") 维度配置系统
+                // END Footer
+            // END Main Container
+        // END Page Container
+        // Scroll to top link, initialized in js/app.js - scrollToTop()
+        a#to-top(href="#")
+            i.fa.fa-angle-double-up
+        // User Settings, modal which opens from Settings link (found in top right user menu) and the Cog link (found in sidebar user info)
+        #modal-user-settings.modal.fade(tabindex="-1", role="dialog", aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    // Modal Header
+                    .modal-header.text-center
+                        h2.modal-title
+                            i.fa.fa-pencil
+                            |  Settings
+                    // END Modal Header
+                    // Modal Body
+                    .modal-body
+                        form.form-horizontal.form-bordered(action="index.html", method="post", enctype="multipart/form-data", onsubmit="return false;")
+                            fieldset
+                                legend Vital Info
+                                .form-group
+                                    label.col-md-4.control-label Username
+                                    .col-md-8
+                                        p.form-control-static Admin
+                                .form-group
+                                    label.col-md-4.control-label(for="user-settings-email") Email
+                                    .col-md-8
+                                        input#user-settings-email.form-control(type="email", name="user-settings-email", value="admin@example.com")
+                                .form-group
+                                    label.col-md-4.control-label(for="user-settings-notifications") Email Notifications
+                                    .col-md-8
+                                        label.switch.switch-primary
+                                            input#user-settings-notifications(type="checkbox", name="user-settings-notifications", value="1", checked="")
+                                            span
+                            fieldset
+                                legend Password Update
+                                .form-group
+                                    label.col-md-4.control-label(for="user-settings-password") New Password
+                                    .col-md-8
+                                        input#user-settings-password.form-control(type="password", name="user-settings-password", placeholder="Please choose a complex one..")
+                                .form-group
+                                    label.col-md-4.control-label(for="user-settings-repassword") Confirm New Password
+                                    .col-md-8
+                                        input#user-settings-repassword.form-control(type="password", name="user-settings-repassword", placeholder="..and confirm it!")
+                            .form-group.form-actions
+                                .col-xs-12.text-right
+                                    button.btn.btn-sm.btn-default(type="button", data-dismiss="modal") Close
+                                    button.btn.btn-sm.btn-primary(type="submit") Save Changes
+                    // END Modal Body
+        // END User Settings
+        include ../includes/script
+        script(src="js/pages/tablesDatatables.js")
+        script.
+            $(function(){ TablesDatatables.init(); });
