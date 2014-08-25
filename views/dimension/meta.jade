@@ -111,10 +111,14 @@ html
                     // Datatables Content
                     .block.full
                         .block-title
+                            .block-options.pull-right
+                                button.btn.btn-sm.btn-success.gap-right-5
+                                    i.fa.fa-plus
+                                    |  添加列
                             h2
                                 strong 表元数据
                         .table-responsive
-                            table#example-datatable.table.table-vcenter.table-condensed.table-bordered
+                            table.table.table-vcenter.table-condensed.table-bordered.table-hover
                                 thead
                                     tr
                                         th.text-center 列名
