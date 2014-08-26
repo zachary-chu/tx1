@@ -24,7 +24,7 @@
         App.alert_message("danger", "系统错误", "服务暂时不可用")
     }
 
-    // 1是产品 2经分 3两个都是
+    // 1是产品 2经分 3两个都是 获取登录人员信息
     var permission_list = {
         "meta_config" : [2, 3],
         "data_config" : [1, 3]
