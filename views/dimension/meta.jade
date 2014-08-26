@@ -22,7 +22,7 @@ html
                             .sidebar-user-avatar
                                 a(href="#")
                                     img(src="/static/img/placeholders/avatars/avatar2.jpg", alt="avatar")
-                            .sidebar-user-name zachary
+                            #user_name.sidebar-user-name
                             .sidebar-user-links
                                 a(href="#", data-toggle="tooltip", data-placement="bottom", title="Logout")
                                     i.gi.gi-exit
@@ -35,11 +35,11 @@ html
                                     | 首页
                             li.sidebar-header
                                 span.sidebar-header-title 维度配置
-                            li
+                            li.hidden(data-action="meta_config")
                                 a.active(href="page_widgets_stats.html")
                                     i.gi.gi-charts.sidebar-nav-icon
                                     | 元数据配置
-                            li
+                            li.hidden(data-action="data_config")
                                 a(href="page_widgets_social.html")
                                     i.gi.gi-share_alt.sidebar-nav-icon
                                     | 数据配置
@@ -119,12 +119,14 @@ html
                                 thead
                                     tr
                                         th 表名
+                                        th 表中文名
                                         th 关联产品
                                         th 操作
                                 tbody
                                     tr
                                         td#meta_table_name_td
                                         td#meta_product_name_td 
+                                        td#meta_product_name_cn_td
                                         td.text-center 
                                             button#edit_product_btn.btn.btn-xs.btn-info(data-toggle="tooltip", title="编辑产品关联") 编辑关联产品
                             .dataTables_wrapper
@@ -173,12 +175,22 @@ html
                     .modal-body
                         form.form-horizontal.form-bordered(action="/dimension/meta_related_product", method="post")
                             .form-group
+                                label.col-md-3.control-label(for="table_name_cn") 表中文名
+                                .col-md-9
+                                    input.form-control(type="text", placeholder="请输入表中文名...")
+                            .form-group
                                 label.col-md-3.control-label(for="product_name") 关联产品
                                 .col-md-9
-                                    input#procut_name_input.form-control(type="text", placeholder="输入关联产品")
+                                    select#product_list_select.select-chosen.form-control(data-placeholder="关联产品")
+                                        option(value="blank")
+                                        // Required for data-placeholder attribute to work with Chosen plugin
+                                        option(value="u_ieg_idog") 天天飞车
+                                        option(value="u_ieg_iplat") 酷跑
+                                        option(value="u_ieg_mgo") 斗地主
                             .form-group.form-actions
                                 .col-xs-12.text-right
                                     button.btn.btn-sm.btn-default.gap-right-5(type="button", data-dismiss="modal") 关闭
+                                    button.btn.btn-sm.btn-danger.gap-right-5(type="button") 删除关联产品
                                     button.btn.btn-sm.btn-primary(type="submit") 提交
                     // END Modal Body
         #edit_col_comment_modal.modal.fade(tabindex="-1", role="dialog", aria-hidden="true")
